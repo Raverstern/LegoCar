@@ -17,4 +17,6 @@ LegoCar Git Repository
 /self-system-stable: 自己做的，稳定版的DE0-Nano的硬件系统，及测试用的C代码;  
 
 
+# 其他相关内容：
+- Zedboard相关内容，参见Ricky-Gong/MyZedCar内的资料，以及其他仓的代码
 
