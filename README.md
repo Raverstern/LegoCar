@@ -7,7 +7,7 @@ LegoCar Git Repository
 https://app.yinxiang.com/pub/tessedar/Note_for_LegoCar
 做乐高车的过程中，遇到的一些问题以及解决方案，都写在里面了～
 
-  解释一下各个目录里的东西：
+解释一下各个目录里的东西：
     /carserver: 黄凯老师给的，架设在车子上的服务器；
     /DE0Course: 黄凯老师给的，之前TUM的老师做好的DE0-Nano硬件系统；
     /option_ref: 放的是无关紧要的文档，或是关于future work的参考文档；
