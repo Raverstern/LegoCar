@@ -1,0 +1,214 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=C:/work/Zhuhai2014/DE0Course/ --output-directory=C:/work/Zhuhai2014/DE0Course/NIOS_Sys/ --report-file=bsf:C:/work/Zhuhai2014/DE0Course/NIOS_Sys.bsf --system-info=DEVICE_FAMILY="Cyclone IV E" --system-info=DEVICE=EP4CE22F17C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=C:/work/Zhuhai2014/DE0Course/NIOS_Sys.qsys
+Progress: Loading DE0Course/NIOS_Sys.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding nios2_qsys_0 [altera_nios2_qsys 13.0]
+Progress: Parameterizing module nios2_qsys_0
+Progress: Adding sdram [altera_avalon_new_sdram_controller 13.0.1.99.2]
+Progress: Parameterizing module sdram
+Progress: Adding led [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module led
+Progress: Adding key [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module key
+Progress: Adding sw [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module sw
+Progress: Adding timer [altera_avalon_timer 13.0.1.99.2]
+Progress: Parameterizing module timer
+Progress: Adding performance_counter [altera_avalon_performance_counter 13.0.1.99.2]
+Progress: Parameterizing module performance_counter
+Progress: Adding altpll_0 [altpll 13.0]
+Progress: Parameterizing module altpll_0
+Progress: Adding Ultrasound0 [Ultrasound_interface 1.0]
+Progress: Parameterizing module Ultrasound0
+Progress: Adding Ultrasound1 [Ultrasound_interface 1.0]
+Progress: Parameterizing module Ultrasound1
+Progress: Adding adc_spi_read [TERASIC_ADC_READ 1.0]
+Progress: Parameterizing module adc_spi_read
+Progress: Adding PWM0 [2_channel_PWM 1.0]
+Progress: Parameterizing module PWM0
+Progress: Adding PWM1 [2_channel_PWM 1.0]
+Progress: Parameterizing module PWM1
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 13.0.1.99.2]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding encoder0 [pulse_senor_read 1.0]
+Progress: Parameterizing module encoder0
+Progress: Adding encoder1 [pulse_senor_read 1.0]
+Progress: Parameterizing module encoder1
+Progress: Adding pio_0 [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module pio_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: NIOS_Sys.key: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: NIOS_Sys.sw: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Warning: NIOS_Sys.pulse_senor_read: TOP_LEVEL_HDL_MODULE automatically set to pulse_senor_read
+Warning: NIOS_Sys.pulse_senor_read: TOP_LEVEL_HDL_MODULE automatically set to pulse_senor_read
+Warning: NIOS_Sys.altpll_0: altpll_0.pll_slave must be connected to an Avalon-MM master
+Warning: NIOS_Sys.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
+Warning: NIOS_Sys.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
+Warning: NIOS_Sys.altpll_0: altpll_0.phasedone_conduit must be exported, or connected to a matching conduit.
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=C:/work/Zhuhai2014/DE0Course/ --output-directory=C:/work/Zhuhai2014/DE0Course/NIOS_Sys/synthesis/ --file-set=QUARTUS_SYNTH --report-file=sopcinfo:C:/work/Zhuhai2014/DE0Course/NIOS_Sys.sopcinfo --report-file=html:C:/work/Zhuhai2014/DE0Course/NIOS_Sys.html --report-file=qip:C:/work/Zhuhai2014/DE0Course/NIOS_Sys/synthesis/NIOS_Sys.qip --report-file=cmp:C:/work/Zhuhai2014/DE0Course/NIOS_Sys.cmp --report-file=svd --system-info=DEVICE_FAMILY="Cyclone IV E" --system-info=DEVICE=EP4CE22F17C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=C:/work/Zhuhai2014/DE0Course/NIOS_Sys.qsys --language=VERILOG
+Progress: Loading DE0Course/NIOS_Sys.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding nios2_qsys_0 [altera_nios2_qsys 13.0]
+Progress: Parameterizing module nios2_qsys_0
+Progress: Adding sdram [altera_avalon_new_sdram_controller 13.0.1.99.2]
+Progress: Parameterizing module sdram
+Progress: Adding led [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module led
+Progress: Adding key [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module key
+Progress: Adding sw [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module sw
+Progress: Adding timer [altera_avalon_timer 13.0.1.99.2]
+Progress: Parameterizing module timer
+Progress: Adding performance_counter [altera_avalon_performance_counter 13.0.1.99.2]
+Progress: Parameterizing module performance_counter
+Progress: Adding altpll_0 [altpll 13.0]
+Progress: Parameterizing module altpll_0
+Progress: Adding Ultrasound0 [Ultrasound_interface 1.0]
+Progress: Parameterizing module Ultrasound0
+Progress: Adding Ultrasound1 [Ultrasound_interface 1.0]
+Progress: Parameterizing module Ultrasound1
+Progress: Adding adc_spi_read [TERASIC_ADC_READ 1.0]
+Progress: Parameterizing module adc_spi_read
+Progress: Adding PWM0 [2_channel_PWM 1.0]
+Progress: Parameterizing module PWM0
+Progress: Adding PWM1 [2_channel_PWM 1.0]
+Progress: Parameterizing module PWM1
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 13.0.1.99.2]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding encoder0 [pulse_senor_read 1.0]
+Progress: Parameterizing module encoder0
+Progress: Adding encoder1 [pulse_senor_read 1.0]
+Progress: Parameterizing module encoder1
+Progress: Adding pio_0 [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module pio_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: NIOS_Sys.key: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: NIOS_Sys.sw: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Warning: NIOS_Sys.pulse_senor_read: TOP_LEVEL_HDL_MODULE automatically set to pulse_senor_read
+Warning: NIOS_Sys.pulse_senor_read: TOP_LEVEL_HDL_MODULE automatically set to pulse_senor_read
+Warning: NIOS_Sys.altpll_0: altpll_0.pll_slave must be connected to an Avalon-MM master
+Warning: NIOS_Sys.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
+Warning: NIOS_Sys.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
+Warning: NIOS_Sys.altpll_0: altpll_0.phasedone_conduit must be exported, or connected to a matching conduit.
+Info: NIOS_Sys: Generating NIOS_Sys "NIOS_Sys" for QUARTUS_SYNTH
+Info: pipeline_bridge_swap_transform: After transform: 18 modules, 72 connections
+Info: No custom instruction connections, skipping transform 
+Info: merlin_translator_transform: After transform: 36 modules, 141 connections
+Info: merlin_domain_transform: After transform: 81 modules, 414 connections
+Info: merlin_router_transform: After transform: 99 modules, 483 connections
+Info: merlin_burst_transform: After transform: 100 modules, 487 connections
+Info: reset_adaptation_transform: After transform: 104 modules, 396 connections
+Info: merlin_network_to_switch_transform: After transform: 139 modules, 468 connections
+Info: merlin_width_transform: After transform: 141 modules, 474 connections
+Info: Inserting clock-crossing logic between cmd_xbar_demux_001.src7 and cmd_xbar_mux_007.sink0
+Info: Inserting clock-crossing logic between cmd_xbar_demux_001.src8 and cmd_xbar_mux_008.sink0
+Info: Inserting clock-crossing logic between cmd_xbar_demux_001.src9 and cmd_xbar_mux_009.sink0
+Info: Inserting clock-crossing logic between cmd_xbar_demux_001.src10 and cmd_xbar_mux_010.sink0
+Info: Inserting clock-crossing logic between cmd_xbar_demux_001.src11 and cmd_xbar_mux_011.sink0
+Info: Inserting clock-crossing logic between cmd_xbar_demux_001.src12 and cmd_xbar_mux_012.sink0
+Info: Inserting clock-crossing logic between cmd_xbar_demux_001.src13 and cmd_xbar_mux_013.sink0
+Info: Inserting clock-crossing logic between cmd_xbar_demux_001.src14 and cmd_xbar_mux_014.sink0
+Info: Inserting clock-crossing logic between cmd_xbar_demux_001.src15 and cmd_xbar_mux_015.sink0
+Info: Inserting clock-crossing logic between rsp_xbar_demux_007.src0 and rsp_xbar_mux_001.sink7
+Info: Inserting clock-crossing logic between rsp_xbar_demux_008.src0 and rsp_xbar_mux_001.sink8
+Info: Inserting clock-crossing logic between rsp_xbar_demux_009.src0 and rsp_xbar_mux_001.sink9
+Info: Inserting clock-crossing logic between rsp_xbar_demux_010.src0 and rsp_xbar_mux_001.sink10
+Info: Inserting clock-crossing logic between rsp_xbar_demux_011.src0 and rsp_xbar_mux_001.sink11
+Info: Inserting clock-crossing logic between rsp_xbar_demux_012.src0 and rsp_xbar_mux_001.sink12
+Info: Inserting clock-crossing logic between rsp_xbar_demux_013.src0 and rsp_xbar_mux_001.sink13
+Info: Inserting clock-crossing logic between rsp_xbar_demux_014.src0 and rsp_xbar_mux_001.sink14
+Info: Inserting clock-crossing logic between rsp_xbar_demux_015.src0 and rsp_xbar_mux_001.sink15
+Info: com_altera_sopcmodel_transforms_avalon_ClockCrossingTransform: After transform: 159 modules, 564 connections
+Info: merlin_mm_transform: After transform: 159 modules, 564 connections
+Info: merlin_interrupt_mapper_transform: After transform: 160 modules, 567 connections
+Info: merlin_interrupt_sync_transform: After transform: 161 modules, 572 connections
+Info: nios2_qsys_0: Starting RTL generation for module 'NIOS_Sys_nios2_qsys_0'
+Info: nios2_qsys_0:   Generation command is [exec C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/eperl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -- C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=NIOS_Sys_nios2_qsys_0 --dir=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0003_nios2_qsys_0_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0003_nios2_qsys_0_gen//NIOS_Sys_nios2_qsys_0_processor_configuration.pl  --do_build_sim=0    --bogus  ]
+Info: nios2_qsys_0: # 2014.08.07 16:04:18 (*) Starting Nios II generation
+Info: nios2_qsys_0: # 2014.08.07 16:04:18 (*)   Checking for plaintext license.
+Info: nios2_qsys_0: # 2014.08.07 16:04:18 (*)   Plaintext license not found.
+Info: nios2_qsys_0: # 2014.08.07 16:04:18 (*)   No license required to generate encrypted Nios II/e.
+Info: nios2_qsys_0: # 2014.08.07 16:04:18 (*)   Elaborating CPU configuration settings
+Info: nios2_qsys_0: # 2014.08.07 16:04:19 (*)   Creating all objects for CPU
+Info: nios2_qsys_0: # 2014.08.07 16:04:20 (*)   Generating RTL from CPU objects
+Info: nios2_qsys_0: # 2014.08.07 16:04:20 (*)   Creating plain-text RTL
+Info: nios2_qsys_0: # 2014.08.07 16:04:22 (*) Done Nios II generation
+Info: nios2_qsys_0: Done RTL generation for module 'NIOS_Sys_nios2_qsys_0'
+Info: nios2_qsys_0: "NIOS_Sys" instantiated altera_nios2_qsys "nios2_qsys_0"
+Info: sdram: Starting RTL generation for module 'NIOS_Sys_sdram'
+Info: sdram:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=NIOS_Sys_sdram --dir=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0004_sdram_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0004_sdram_gen//NIOS_Sys_sdram_component_configuration.pl  --do_build_sim=0  ]
+Info: sdram: Done RTL generation for module 'NIOS_Sys_sdram'
+Info: sdram: "NIOS_Sys" instantiated altera_avalon_new_sdram_controller "sdram"
+Info: led: Starting RTL generation for module 'NIOS_Sys_led'
+Info: led:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=NIOS_Sys_led --dir=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0005_led_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0005_led_gen//NIOS_Sys_led_component_configuration.pl  --do_build_sim=0  ]
+Info: led: Done RTL generation for module 'NIOS_Sys_led'
+Info: led: "NIOS_Sys" instantiated altera_avalon_pio "led"
+Info: key: Starting RTL generation for module 'NIOS_Sys_key'
+Info: key:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=NIOS_Sys_key --dir=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0006_key_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0006_key_gen//NIOS_Sys_key_component_configuration.pl  --do_build_sim=0  ]
+Info: key: Done RTL generation for module 'NIOS_Sys_key'
+Info: key: "NIOS_Sys" instantiated altera_avalon_pio "key"
+Info: sw: Starting RTL generation for module 'NIOS_Sys_sw'
+Info: sw:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=NIOS_Sys_sw --dir=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0007_sw_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0007_sw_gen//NIOS_Sys_sw_component_configuration.pl  --do_build_sim=0  ]
+Info: sw: Done RTL generation for module 'NIOS_Sys_sw'
+Info: sw: "NIOS_Sys" instantiated altera_avalon_pio "sw"
+Info: timer: Starting RTL generation for module 'NIOS_Sys_timer'
+Info: timer:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=NIOS_Sys_timer --dir=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0008_timer_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0008_timer_gen//NIOS_Sys_timer_component_configuration.pl  --do_build_sim=0  ]
+Info: timer: Done RTL generation for module 'NIOS_Sys_timer'
+Info: timer: "NIOS_Sys" instantiated altera_avalon_timer "timer"
+Info: performance_counter: Starting RTL generation for module 'NIOS_Sys_performance_counter'
+Info: performance_counter:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_performance_counter -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_performance_counter/generate_rtl.pl --name=NIOS_Sys_performance_counter --dir=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0009_performance_counter_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0009_performance_counter_gen//NIOS_Sys_performance_counter_component_configuration.pl  --do_build_sim=0  ]
+Info: performance_counter: Done RTL generation for module 'NIOS_Sys_performance_counter'
+Info: performance_counter: "NIOS_Sys" instantiated altera_avalon_performance_counter "performance_counter"
+Info: altpll_0: "NIOS_Sys" instantiated altpll "altpll_0"
+Info: Ultrasound0: "NIOS_Sys" instantiated Ultrasound_interface "Ultrasound0"
+Info: adc_spi_read: "NIOS_Sys" instantiated TERASIC_ADC_READ "adc_spi_read"
+Info: PWM0: "NIOS_Sys" instantiated 2_channel_PWM "PWM0"
+Info: jtag_uart_0: Starting RTL generation for module 'NIOS_Sys_jtag_uart_0'
+Info: jtag_uart_0:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=NIOS_Sys_jtag_uart_0 --dir=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0015_jtag_uart_0_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/OLIVER~1/AppData/Local/Temp/alt6289_876882291819300897.dir/0015_jtag_uart_0_gen//NIOS_Sys_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart_0: Done RTL generation for module 'NIOS_Sys_jtag_uart_0'
+Info: jtag_uart_0: "NIOS_Sys" instantiated altera_avalon_jtag_uart "jtag_uart_0"
+Info: encoder0: "NIOS_Sys" instantiated pulse_senor_read "encoder0"
+Info: nios2_qsys_0_instruction_master_translator: "NIOS_Sys" instantiated altera_merlin_master_translator "nios2_qsys_0_instruction_master_translator"
+Info: nios2_qsys_0_jtag_debug_module_translator: "NIOS_Sys" instantiated altera_merlin_slave_translator "nios2_qsys_0_jtag_debug_module_translator"
+Info: nios2_qsys_0_instruction_master_translator_avalon_universal_master_0_agent: "NIOS_Sys" instantiated altera_merlin_master_agent "nios2_qsys_0_instruction_master_translator_avalon_universal_master_0_agent"
+Info: nios2_qsys_0_jtag_debug_module_translator_avalon_universal_slave_0_agent: "NIOS_Sys" instantiated altera_merlin_slave_agent "nios2_qsys_0_jtag_debug_module_translator_avalon_universal_slave_0_agent"
+Info: nios2_qsys_0_jtag_debug_module_translator_avalon_universal_slave_0_agent_rsp_fifo: "NIOS_Sys" instantiated altera_avalon_sc_fifo "nios2_qsys_0_jtag_debug_module_translator_avalon_universal_slave_0_agent_rsp_fifo"
+Info: addr_router: "NIOS_Sys" instantiated altera_merlin_router "addr_router"
+Info: addr_router_001: "NIOS_Sys" instantiated altera_merlin_router "addr_router_001"
+Info: id_router: "NIOS_Sys" instantiated altera_merlin_router "id_router"
+Info: id_router_001: "NIOS_Sys" instantiated altera_merlin_router "id_router_001"
+Info: id_router_002: "NIOS_Sys" instantiated altera_merlin_router "id_router_002"
+Info: burst_adapter: "NIOS_Sys" instantiated altera_merlin_burst_adapter "burst_adapter"
+Info: rst_controller: "NIOS_Sys" instantiated altera_reset_controller "rst_controller"
+Info: cmd_xbar_demux: "NIOS_Sys" instantiated altera_merlin_demultiplexer "cmd_xbar_demux"
+Info: cmd_xbar_demux_001: "NIOS_Sys" instantiated altera_merlin_demultiplexer "cmd_xbar_demux_001"
+Info: cmd_xbar_mux: "NIOS_Sys" instantiated altera_merlin_multiplexer "cmd_xbar_mux"
+Info: rsp_xbar_demux_002: "NIOS_Sys" instantiated altera_merlin_demultiplexer "rsp_xbar_demux_002"
+Info: rsp_xbar_mux: "NIOS_Sys" instantiated altera_merlin_multiplexer "rsp_xbar_mux"
+Info: Reusing file C:/work/Zhuhai2014/DE0Course/NIOS_Sys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_xbar_mux_001: "NIOS_Sys" instantiated altera_merlin_multiplexer "rsp_xbar_mux_001"
+Info: Reusing file C:/work/Zhuhai2014/DE0Course/NIOS_Sys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: width_adapter: "NIOS_Sys" instantiated altera_merlin_width_adapter "width_adapter"
+Info: Reusing file C:/work/Zhuhai2014/DE0Course/NIOS_Sys/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file C:/work/Zhuhai2014/DE0Course/NIOS_Sys/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: crosser: "NIOS_Sys" instantiated altera_avalon_st_handshake_clock_crosser "crosser"
+Info: irq_mapper: "NIOS_Sys" instantiated altera_irq_mapper "irq_mapper"
+Info: irq_synchronizer: "NIOS_Sys" instantiated altera_irq_clock_crosser "irq_synchronizer"
+Info: NIOS_Sys: Done NIOS_Sys" with 36 modules, 223 files, 3839762 bytes
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

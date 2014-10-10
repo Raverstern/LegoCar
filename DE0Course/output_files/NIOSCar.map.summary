@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sun Aug 31 16:32:02 2014
+Quartus II 64-Bit Version : 13.0.0 Build 156 04/24/2013 SJ Web Edition
+Revision Name : NIOSCar
+Top-level Entity Name : NIOSCar
+Family : Cyclone IV E
+Total logic elements : 7,850
+    Total combinational functions : 6,307
+    Dedicated logic registers : 4,551
+Total registers : 4551
+Total pins : 96
+Total virtual pins : 0
+Total memory bits : 142,336
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1

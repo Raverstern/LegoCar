@@ -1,0 +1,142 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <signal.h>
+#include <errno.h>
+#include <fcntl.h>
+
+#include <arpa/inet.h>
+#include <linux/if.h>
+#include <linux/if_ether.h>
+#include <linux/if_packet.h>
+#include <linux/ip.h>
+#include <netinet/ether.h>
+#include <netinet/if_ether.h>
+#include <netinet/in.h>
+#include <sys/ioctl.h>
+#include <sys/un.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <libconfig.h>
+
+#include "car_handler.h"
+#include "nanoboard.h"
+#define MAX(a,b) (((a) > (b)) ? (a) : (b))
+struct car Car;
+
+int init_car(struct Nano_Board * boards,config_t * config){
+	long int ubatP, ubatC, distF, distR;
+	memset(&Car,0,sizeof(Car));
+	
+	if(!(config_lookup_int(config,"BatterySensorPower",&ubatP)&&
+		config_lookup_int(config,"BatterySensorCompute",&ubatC)&&
+		config_lookup_int(config,"DistanceSensorFront",&distF)&&
+		config_lookup_int(config,"DistanceSensorRear",&distR)&&
+		config_lookup_bool(config,"EnableDistanceHanlder",&(Car.enDistHandler))&&
+		config_lookup_bool(config,"EnableBatteryHandler",&(Car.enBattHandler)))
+	{ 
+		fprintf(stderr,"Problem with reading assignment of Sensors");
+		return -1;
+	}
+	
+	
+	Car.board = boards;
+	Car.ubat_power = &(boards[ubatP].outdat.values.ubat);
+	Car.ubat_compute = &(boards[ubatC].outdat.values.ubat);
+	Car.distance_front = &(boards[distF].outdat.values.distance);
+	Car.distance_rear = &(boards[distR].outdat.values.distance);
+	Car.v_left = 0;
+	Car.v_right = 0;
+}
+
+#define FWD 1
+#define BWD 2
+struct handler_state{
+	int state;
+	float vr_max;
+	float vl_max;
+	
+};
+struct handler_state bh_state;
+struct handler_state dhf_state, dhr_state;
+
+	
+	
+#define IDLE 0
+#define BATT_1_EMPTY 1
+#define BATT_2_EMPTY 2
+void battery_handler(struct handler_state* s){
+	if (*(Car.ubat_power) < 1000)
+		s->state = BATT_1_EMPTY;
+	if (*(Car.ubat_compute) < 1000)
+		s->state = BATT_2_EMPTY;
+	if( s->state != IDLE){
+		s->vr_max =0;
+		s->vl_max =0;
+	}else{
+		s->vr_max = 1;
+		s->vl_max = 1;
+	}
+}
+
+#define DIST_BREAK_BEGIN 0.2
+#define DIST_MIN 0.05
+#define DIST_BREAKING 1
+#define DIST_NO_OBSTACLE 2
+void dist_handler(struct handler_state* s,float* distance){
+	if(*(distance) == -1)
+		s->state = DIST_NO_OBSTACLE;	
+	else if(*(distance) < DIST_BREAK_BEGIN){
+		s->state = DIST_BREAKING;
+		float v = (*(distance) - DIST_MIN)* 1.0/(DIST_BREAK_BEGIN-DIST_MIN);
+		v = MAX(v,0);
+		s->vr_max = v;
+		s->vl_max = v;
+	}else{ 
+		s->state = IDLE;
+		s->vr_max = 1;
+		s->vl_max = 1;
+	}
+}
+
+
+		
+		
+#define V_MAX 200
+void handle_car(void){
+	battery_handler(&bh_state);
+	dist_handler(&dhf_state,Car.distance_front);
+	dist_handler(&dhr_state,Car.distance_front);
+	
+	float vl = bh_state.vl_max*Car.v_left*((Car.v_left>0)?dhf_state.vl_max:dhr_state.vl_max);
+	float vr = bh_state.vr_max*Car.v_right*((Car.v_right>0)?dhf_state.vr_max:dhr_state.vr_max);
+	
+	printf("vr: %f, vl: %f",vr,vl);
+	
+	Car.board[0].indat.values.W = (int)(vr*V_MAX);
+	Car.board[1].indat.values.W = (int)(vr*V_MAX);
+	Car.board[2].indat.values.W = (int)(vl*-V_MAX);
+	Car.board[3].indat.values.W = (int)(vl*-V_MAX);
+	
+}
+	
+int parse_command(char* cmd){
+	float l,r;
+	printf("lets parse the command...\n");
+	printf("the command string is: %s\n",cmd);
+	int check = sscanf(cmd,"[%f,%f]",&l,&r);
+	printf("sscanf returns %d values: L: %f, R: %f\n",check,l,r);	
+	if(check == 2 && l <= 1 && r <= 1 && l >= -1 && r >= -1){
+		Car.v_left = l;
+		Car.v_right = r;
+		return sprintf(cmd,"{\n\"distance_front\":%f\n\"distance_rear\":%f\n\"Wout,Win\":%d,%d}\nbatstate:%d\ndist_state:%d,%d",
+		 *(Car.distance_front),*(Car.distance_rear),Car.board[0].outdat.values.W,Car.board[0].indat.values.W,bh_state.state,dhf_state.state,dhr_state.state);
+	}
+	
+	strcpy(cmd,"Default return value");
+	return 21;
+}
+
+

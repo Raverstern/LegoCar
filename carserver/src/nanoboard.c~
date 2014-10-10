@@ -1,0 +1,4 @@
+
+struct {
+	char name[20];
+	

@@ -1,0 +1,18 @@
+
+
+struct car{
+	struct Nano_Board* board;
+	unsigned short* ubat_power;
+	unsigned short* ubat_compute;
+	float* distance_front;
+	float* distance_rear;
+	float v_left;
+	float v_right;
+	int enDistHandler;
+	int enBattHandler;
+	};
+int parse_command(char* cmd);
+
+void init_car(struct Nano_Board * board,config_t* config);
+void handle_car(void);
+
