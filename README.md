@@ -18,13 +18,13 @@ LegoCar Git Repository
 /self-system-stable: 自己做的，稳定版的DE0-Nano的硬件系统，及测试用的C代码;  
 
 ### English:
-/carserver: Server built up on the car, given by Mr Huang Kai;
-/DE0Course: A hardware system for reference, built up by teachers from TUM, given by Mr Huang Kai;  
-/option\_ref: Some documents that are not important or only about future work;  
-/photos: Photos taken by Mr Huang Kai, and we are about to upload those taken by us;  
-/PWM: The original hardware IP of PWM written in HDL, given by Mr Huang Kai (should be modified if you're using QuartusII14.0 or higher version);
-/ref: Documents that are fundamental and helpful;
-/self-system-stable: A stable hardware system on DE0-Nano board built up by us, and the testing code written by C;
+**/carserver**: Server built up on the car, given by Mr Huang Kai;
+**/DE0Course**: A hardware system for reference, built up by teachers from TUM, given by Mr Huang Kai;  
+**/option\_ref**: Some documents that are not important or only about future work;  
+**/photos**: Photos taken by Mr Huang Kai, and we are about to upload those taken by us;  
+**/PWM**: The original hardware IP of PWM written in HDL, given by Mr Huang Kai (should be modified if you're using QuartusII14.0 or higher version);
+**/ref**: Documents that are fundamental and helpful;
+**/self-system-stable**: A stable hardware system on DE0-Nano board built up by us, and the testing code written by C;
 
 
 
