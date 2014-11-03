@@ -1,0 +1,59 @@
+数据包：
+union PACKET{
+	struct {
+		unsigned int type : 4;
+		unsigned int subtype : 4;
+		unsigned char seq_num;
+		unsigned char undefined[2];
+	}ctrlpck;
+	struct {
+		unsigned int type : 4;
+		unsigned int ecorn_n : 2;
+		unsigned int m_s : 2;
+		unsigned char seq_num;
+		unsigned char duty;
+		unsigned char dir;
+	}datapck;
+	unsigned char packet[4];
+};
+
+1、控制：packet[0] = 0x1*, packet[1] = seq_num, packet[2,3] = undefined
+	* 测试：packet[0] = 0x10
+		目的：检测连接是否畅通。
+		DE0：接收后，需要返回一个确认包。
+
+	* 更新：packet[0] = 0x11
+		目的：根据参数变量，更新小车的运动状态。
+		DE0：调用motor_setting函数，并更新现状态变量。
+
+	* 停止：packet[0] = 0x12
+		目的：让小车停止运转。
+		DE0：调用motor_setting函数，让马达停止，让舵机摆正。
+
+2、数据：packet[0] = 0x2*, packet[1] = seq_num, packet[2] = duty, packet[3] = dir;
+	packet[0]的末4位分为两部分，前2位代表动力组号，后2位中0代表motor，1代表servo
+	* 设置动力组0：packet[0] = 0x20(motor) || 0x21(servo)
+		目的：设置0号动力组的运动参数。
+		DE0：接收动力组参数，写入变量。
+	
+	* 设置动力组1：packet[0] = 0x24(motor) || 0x25(servo)
+		目的：设置1号动力组的运动参数。
+		DE0：接收动力组参数，写入变量。
+	
+	* 设置动力组2：packet[0] = 0x28(motor) || 0x29(servo)
+		目的：设置2号动力组的运动参数。
+		DE0：接收动力组参数，写入变量。
+	
+	* 设置动力组3：packet[0] = 0x2c(motor) || 0x2d(servo)
+		目的：设置3号动力组的运动参数。
+		DE0：接收动力组参数，写入变量。
+
+3、确认：packet[0] = 0x30, packet[1] = TestPacket.seq_num, packet[2,3] = undefined
+	其中，seq_num代表要确认的测试包的seq_num
+	目的：让DE0响应测试包，确保连接通畅。
+	DE0:将要确认的测试包的seq_num拷贝一份填入确认包，并发回。
+	
+
+
+	
+	
