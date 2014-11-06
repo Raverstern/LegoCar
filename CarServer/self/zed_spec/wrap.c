@@ -1,9 +1,10 @@
-#include <stdio.h>
 #include <arpa/inet.h>
-#include <sys/socket.h>
 #include <sys/errno.h>
-#include <string.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
 #include <sys/types.h>
+#include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -32,7 +33,6 @@ void Inet_pton(int family, const char *strptr, void *addrptr){
 }
 
 void Connect(int sockfd, const struct sockaddr *servaddr, socklen_t addrlen){
-
 	if (connect(sockfd, servaddr, addrlen) < 0){
 		fprintf(stderr, "%s:%d: Connect(): %s\n", __FILE__, __LINE__, strerror(errno));
 		exit(1);
@@ -48,7 +48,7 @@ ssize_t Writen(int sockfd, const void *buf, size_t nbytes){
 	nleft = nbytes;
 	
 	while (nleft > 0){
-		if ( (nwritten = write(sockfd, buf, nbytes)) <= 0) {
+		if ( (nwritten = write(sockfd, ptr, nbytes)) <= 0) {
 			if (nwritten < 0 && errno == EINTR)
 				nwritten = 0;
 			else {
@@ -71,7 +71,7 @@ ssize_t Readn(int sockfd, void *buf, size_t nbytes){
 	nleft = nbytes;
 
 	while (nleft > 0){
-		if ( (nread = read(sockfd, buf, nleft)) < 0){
+		if ( (nread = read(sockfd, ptr, nleft)) < 0){
 			if (errno == EINTR)
 				nread = 0; // and will read() again
 			else{
@@ -84,6 +84,14 @@ ssize_t Readn(int sockfd, void *buf, size_t nbytes){
 		ptr += nread;
 	}
 	return (nbytes - nleft);
+}
+
+int Mkfifo(const char *pathname, mode_t mode){
+	if ( (mkfifo(pathname, mode) < 0) && (errno != EEXIST)){
+		fprintf(stderr, "%s:%d: Mkfifo(): %s\n", __FILE__, __LINE__, strerror(errno));
+		exit(1);
+	}
+	return 0;
 }
 
 
