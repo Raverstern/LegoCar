@@ -1,9 +1,9 @@
 #include <sys/errno.h>
-#include <sys/types.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+
 
 ssize_t Writen(int sockfd, const void *buf, size_t nbytes){
 	size_t nleft;
@@ -38,7 +38,6 @@ ssize_t Readn(int sockfd, void *buf, size_t nbytes){
 
 	while (nleft > 0){
 		if ( (nread = read(sockfd, ptr, nleft)) < 0){
-			printf("nread: %d", nread);
 			if (errno == EINTR)
 				nread = 0; // and will read() again
 			else{

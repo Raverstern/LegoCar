@@ -27,8 +27,7 @@
 //#define PWM_PHASE2 MOTOR_1_BASE+5
 
 #define PERIOD_50MHZ 3333
-#define DUTY_50HZ(x) (x)*3333/100
-#define DUTY_FULL 1000
+#define DUTY_50HZ(x) ((x)*PERIOD_50MHZ/100)
 
 // enable
 #define ENABLE_CH1 1

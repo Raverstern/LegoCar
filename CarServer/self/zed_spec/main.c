@@ -23,14 +23,14 @@ int sockfd;
 int main(void){
 	int fifofd, maxfd;
 	struct sockaddr_in DE0addr;
-	packet_t wrpck, rdpck;
+	packet_t wrpck, rdpck, datapck[4], updatepck;
 	config_t cfg;
 	//config_setting_t *setting;
 	const char *boardaddr;
 	int boardport;
 	fd_set rfds, rfd; // read file descriptor set
 	time_t conn_time;
-	int pckcount = 0;
+	int pckcount = 0, i;
 
 	config_init(&cfg);
 	config_read_file(&cfg, "board.cfg");
@@ -47,25 +47,32 @@ int main(void){
 
 	Inet_pton(AF_INET, boardaddr, &DE0addr.sin_addr);
 	Connect(sockfd, (struct sockaddr *) &DE0addr, sizeof(DE0addr));
-	network_test(sockfd, 2);
+	network_test(sockfd, 10);
 	init_DE0();
 	signal(SIGINT, cleanup);
 	signal(SIGTERM, cleanup);
 
 	Mkfifo(FIFO, FILE_MODE);
-	fifofd = open(FIFO, O_RDONLY | O_NONBLOCK);
+	printf("mark fifo\n");
+	fifofd = open(FIFO, O_RDONLY);
+	printf("mark fifo ok\n");
 	FD_SET(fifofd, &rfds);
 	FD_SET(sockfd, &rfds);
 	maxfd = fifofd > sockfd ? fifofd : sockfd;
 
+	set_packet_ctrl(&updatepck, CTRL_UPDATE);
 	conn_time = time(NULL) + 1;
 	while (1){
 		printf("looping...\n");
 		if (conn_time < time(NULL)){ // Time has elapsed 1s from last check
-			if (pckcount < 7){
+			if (pckcount <= 0){
 				// Connection Problem
-				fprintf(stderr, "%s:%d: Connection timeout!\n", __FILE__, __LINE__);
-				exit(1);
+				fprintf(stderr, "Connection timeout, try connect again\n");
+				FD_ZERO(&rfd);
+				FD_SET(sockfd, &rfd);
+				select(sockfd+1, &rfd, NULL, NULL, NULL);
+				//Connect(sockfd, (struct sockaddr *) &DE0addr, sizeof(DE0addr));
+				//maxfd = fifofd > sockfd ? fifofd : sockfd;
 			}	
 			printf("pckcount = %d\n", pckcount);
 			pckcount = 0;
@@ -78,14 +85,37 @@ int main(void){
 		// for now, just add counter after receiving heartbeat packet
 		if (FD_ISSET(sockfd, &rfd)){
 			Readn(sockfd, &rdpck, sizeof(rdpck));
-			if (is_heartbeat(&rdpck))
+			if (is_heartbeat(&rdpck)){
+				printf("heart\n");
 				pckcount++;
+			}
 		}
 		// Handle message from UI process
 		// for now, just forward the packet directly to DE0
 		if (FD_ISSET(fifofd, &rfd)){ 
-			Readn(fifofd, &wrpck, sizeof(wrpck));
-			Writen(sockfd, &wrpck, sizeof(wrpck));
+			read(fifofd, &wrpck, sizeof(wrpck));
+			if (wrpck.all[0] == 'u'){
+				for (i = 0; i < 4; ++i)
+					set_packet_data(&datapck[i], i, SEL_MOTOR, 100, FRONT);
+			}
+			else if (wrpck.all[0] == 'd'){
+				for (i = 0; i < 4; ++i)
+					set_packet_data(&datapck[i], i, SEL_MOTOR, 100, BACK);
+			}
+			else if (wrpck.all[0] == 'r'){
+				for (i = 0; i < 4; ++i)
+					set_packet_data(&datapck[i], i, SEL_SERVO, 100, RIGHT);
+			}
+			else if (wrpck.all[0] == 'l'){
+				for (i = 0; i < 4; ++i)
+					set_packet_data(&datapck[i], i, SEL_SERVO, 100, LEFT);
+			}
+			printf("fifo: %c-%c-%c-%c\n", wrpck.all[3],wrpck.all[2],wrpck.all[1],wrpck.all[0]);
+			for (i = 0; i < 4; ++i){
+				Writen(sockfd, &datapck[i], sizeof(datapck[i]));
+				printf("ecorn_n:%d m_s:%d dir:%d duty:%d\n", datapck[i].datapck.ecorn_n, datapck[i].datapck.m_s, datapck[i].datapck.dir, datapck[i].datapck.duty);
+			}
+			Writen(sockfd, &updatepck, sizeof(updatepck));
 		}
 	}
 	
@@ -103,10 +133,6 @@ void cleanup(int sig_num){
 
 	set_packet_ctrl(&wrpck, CTRL_STOP);
 	Writen(sockfd, &wrpck, sizeof(wrpck));
-	Readn(sockfd, &rdpck, sizeof(rdpck));
-	while (is_heartbeat(&rdpck)) //prevent error occurred by timer interrupt
-		Readn(sockfd, &rdpck, sizeof(rdpck));
-	check_test_ack(&wrpck, &rdpck);
 	unlink(FIFO);
 	printf("Server Halt!\n");
 	exit(0);

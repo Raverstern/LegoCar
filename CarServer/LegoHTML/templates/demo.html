@@ -1,0 +1,76 @@
+﻿<html><head>
+		<meta charset="utf-8" >
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" >
+		<link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.min.css" >
+		<link rel="stylesheet" type="text/css" href="static/style.css" >
+		<link rel="stylesheet" href="static/jqueryui/jquery-ui.css">
+		<script type="text/javascript" src="static/jquery/jquery-1.11.0.min.js" ></script>
+	  	<script type="text/javascript" src="static/jquery/jquery-ui.js"></script>
+		<script type="text/javascript" src="static/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="static/virtualjoystick.js" ></script>
+	</head>
+	<body>
+		<div id="container" ></div>
+
+		<div id="info">
+			<p align="center"><h1><font color = "#3273a8"> <strong> Server Robot Based on Embedded System with a Lego Car</strong></font></h1> </p>
+			
+			<div class="container-fluid row">
+				<div class="col-xs-12 col-sm-3 col-lg-3" >
+					<div id="carstatus" class="panel panel-primary" >
+					  <div class="panel-heading">
+						<a class="pull-left" href="#">
+							<img src="static/images/car.png" width="32" heigth="32" >
+						</a>
+						Status
+						<a class="pull-right" href="#">
+							<img src="static/images/battery-.png" width="32" heigth="32" >
+						</a>
+					  </div>
+					  <div class="panel-body">
+						<div id="speed" >
+							<a class="pull-left" href="#">
+								<img src="static/images/speed.png" width="32" heigth="32" >
+							</a>
+						    <div class="progress progress-striped active" >
+							  <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" >
+								<span class="sr-only" >0 Complete</span>
+							  </div>
+							</div>
+						</div>
+						<div id="singal">
+							<h5>Car Steering</h5>
+							<span id="result"></span>
+						</div>
+					  </div>
+					  
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-9 col-lg-9">
+					<div id="gallery" class="panel panel-primary" >
+						<div id="carousel-example-generic" class="panel-body carousel slide" data-ride="carousel">
+						  <!-- Indicators -->
+						  
+						  <!-- Wrapper for slides -->
+						  <div class="carousel">
+						    <div class="item active">
+							<img src = "http://192.168.2.1:8080/?action=stream" width = "800" height = "600">
+						     <!--video id="video1" img="http://192.168.2.1:8080/?action=stream" width = "900" height = "500" loop="true"/-->
+						    </div>
+						    
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div align="center">
+				Copyright © Richy, Rensheng, Jinkun, Xueqi, Dan
+			</div>
+		</div>
+		<script type="text/javascript" src="static/custom.js" ></script>
+		<script>
+			document.getElementById("video1").play();
+		</script>
+		
+		</body></html>
