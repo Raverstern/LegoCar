@@ -1,15 +1,15 @@
 #define FRONT 0
-#define BACK 0xffffffff
+#define BACK 0xff
 #define LEFT 0
-#define RIGHT 0xffffffff
+#define RIGHT 0xff
 
 struct MOTOR{
 // Variables
 	// Dynamic
-	unsigned long duty;
-	unsigned long dir;
-	unsigned long duty_tmp;
-	unsigned long dir_tmp;
+	unsigned char duty;
+	unsigned char dir;
+	unsigned char duty_tmp;
+	unsigned char dir_tmp;
 
         // Seldomly changed
 	unsigned long enable;
