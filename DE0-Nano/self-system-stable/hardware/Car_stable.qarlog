@@ -1,7 +1,7 @@
-Quartus II Archive log --	/home/ricky/altera/Ricky/Car_stable/Car_stable.qarlog
+Quartus II Archive log --	/home/ricky/LegoCar/DE0-Nano/self-system-stable/Car_stable.qarlog
 
-Archive:	/home/ricky/altera/Ricky/Car_stable/Car_stable.qar
-Date:		Fri Oct 10 23:11:58 2014
+Archive:	/home/ricky/LegoCar/DE0-Nano/self-system-stable/Car_stable.qar
+Date:		Wed Nov 12 15:58:11 2014
 Quartus II 64-Bit		14.0.0 Build 200 06/17/2014 SJ Full Version
 
 	=========== Files Selected: ===========
@@ -21,7 +21,6 @@ Quartus II 64-Bit		14.0.0 Build 200 06/17/2014 SJ Full Version
 /home/ricky/altera/Ricky/Car_stable/NiosII_sys/synthesis/submodules/NiosII_sys_cpu.sdc
 /home/ricky/altera/Ricky/Car_stable/NiosII_sys/synthesis/submodules/NiosII_sys_cpu.v
 /home/ricky/altera/Ricky/Car_stable/NiosII_sys/synthesis/submodules/NiosII_sys_cpu_bht_ram.mif
-/home/ricky/altera/Ricky/Car_stable/NiosII_sys/synthesis/submodules/NiosII_sys_cpu_dc_tag_ram.mif
 /home/ricky/altera/Ricky/Car_stable/NiosII_sys/synthesis/submodules/NiosII_sys_cpu_ic_tag_ram.mif
 /home/ricky/altera/Ricky/Car_stable/NiosII_sys/synthesis/submodules/NiosII_sys_cpu_jtag_debug_module_sysclk.v
 /home/ricky/altera/Ricky/Car_stable/NiosII_sys/synthesis/submodules/NiosII_sys_cpu_jtag_debug_module_tck.v
@@ -53,6 +52,7 @@ Quartus II 64-Bit		14.0.0 Build 200 06/17/2014 SJ Full Version
 /home/ricky/altera/Ricky/Car_stable/NiosII_sys/synthesis/submodules/NiosII_sys_mm_interconnect_0_rsp_mux_001.sv
 /home/ricky/altera/Ricky/Car_stable/NiosII_sys/synthesis/submodules/NiosII_sys_sdram.v
 /home/ricky/altera/Ricky/Car_stable/NiosII_sys/synthesis/submodules/NiosII_sys_sysid.v
+/home/ricky/altera/Ricky/Car_stable/NiosII_sys/synthesis/submodules/NiosII_sys_timer.v
 /home/ricky/altera/Ricky/Car_stable/NiosII_sys/synthesis/submodules/NiosII_sys_uart.v
 /home/ricky/altera/Ricky/Car_stable/NiosII_sys/synthesis/submodules/altera_avalon_sc_fifo.v
 /home/ricky/altera/Ricky/Car_stable/NiosII_sys/synthesis/submodules/altera_avalon_st_clock_crosser.v
@@ -95,8 +95,7 @@ Quartus II 64-Bit		14.0.0 Build 200 06/17/2014 SJ Full Version
 /home/ricky/altera/Ricky/Car_stable/output_files/Car_stable.sta.rpt
 /home/ricky/altera/Ricky/Car_stable/output_files/Car_stable.sta.summary
 /home/ricky/altera/Ricky/Car_stable/output_files/Chain1.cdf
-/home/ricky/altera/Ricky/Car_stable/pwm_gen.vhd
-	======= Total: 91 files to archive =======
+	======= Total: 90 files to archive =======
 
 	================ Status: ===============
 All files archived successfully.
